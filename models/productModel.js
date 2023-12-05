@@ -1,32 +1,28 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const productSchema = mongoose.Schema(
+const cadastroSchema = mongoose.Schema(
 {
-    name:{
+    email: {
         type: String,
-        required: [true, "Please enter a product name"]
+        required: [true, "Por favor coloque seu email!"]
     },
-    quantity:{
-        type:Number,
-        required: true,
-        default: 0
-    },
-    price:{
-        type:Number,
+    numero: {
+        type: Number,
         required: true,
     },
-    image:{
-        type:String,
-        required:false,
+    endereco: {
+        type: String,
+        required: true,
+    },
+    nomeCompleto: {
+        type: String,
+        required: [true, "Escreva seu nome completo!"]
     }
 },
+{
+    timestamps: true
+});
 
-    {
-        timestamps: true
-    }
+const Cadastro = mongoose.model('Cadastro', cadastroSchema);
 
-)
-
-const Product = mongoose.model('Product', productSchema);
-
-module.exports = Product;
+module.exports = Cadastro;
